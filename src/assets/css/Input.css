@@ -1,0 +1,13 @@
+.github-input {
+  border-radius: 6px;
+  padding: 8px 16px;
+  background-color: #FAFBFC;
+  border: 1px solid #D1D5DA;
+}
+
+.github-input:focus {
+  outline: 0;
+  background-color: #ffffff;
+  border: 1px solid #02448F;
+  box-shadow: 0 0 0 4px #B2D1F3;
+}

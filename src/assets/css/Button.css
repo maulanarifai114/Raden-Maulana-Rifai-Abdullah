@@ -1,0 +1,18 @@
+.github {
+  border-radius: 6px;
+  padding: 8px 16px;
+  background-color: black;
+  border: 0;
+  color: white;
+  font-weight: 600;
+  width: fit-content;
+  transition: .3s;
+}
+
+.github:focus {
+  outline: 0;
+}
+
+.github:hover {
+  opacity: .8;
+}
