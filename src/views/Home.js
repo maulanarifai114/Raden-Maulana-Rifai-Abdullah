@@ -11,6 +11,7 @@ export default function Home() {
   const title = 'arkademy'
   const desc = 'Repository for Arkademy Project'
   const url = 'https://github.com/maulanarifai114/arkademy'
+  const branch = 'main'
   const login = (e) => {
     e.preventDefault()
     console.log('login')
@@ -25,6 +26,7 @@ export default function Home() {
       <Input onchange={search}/>
       <br />
       <Repo
+        branch={branch}
         avatar={avatar}
         title={title}
         desc={desc}
