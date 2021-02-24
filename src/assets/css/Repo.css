@@ -25,3 +25,21 @@
   height: 100%;
   object-fit: cover;
 }
+
+.ml-20 {
+  padding: 0 0 0 20px;
+  margin: 0 0 0 20px;
+  border-left: 1px solid #D1D5DA;
+}
+
+.title-repo {
+  font-weight: 600;
+  font-size: 1.35rem;
+  max-width: 250px;
+}
+
+.desc {
+  color: #a1a3a5;
+  line-height: 1.5em;
+  max-width: 250px;
+}

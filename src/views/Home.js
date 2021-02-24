@@ -7,6 +7,10 @@ import Repo from '../container/Repo'
 export default function Home() {
   // const [username, setUsername] = useState('')
   // const url = `https://github.com/login/oauth/authorize?client_id=${clientId}&scope=repo&redirect_uri=http://localhost:3000/detail`
+  const avatar = 'https://avatars.githubusercontent.com/u/72542280?v=4'
+  const title = 'arkademy'
+  const desc = 'Repository for Arkademy Project'
+  const url = 'https://github.com/maulanarifai114/arkademy'
   const login = (e) => {
     e.preventDefault()
     console.log('login')
@@ -20,7 +24,12 @@ export default function Home() {
       <br />
       <Input onchange={search}/>
       <br />
-      <Repo avatar="https://avatars.githubusercontent.com/u/72542280?v=4"/>
+      <Repo
+        avatar={avatar}
+        title={title}
+        desc={desc}
+        url={url}
+      />
     </div>
   )
 }
