@@ -1,5 +1,14 @@
 # Getting Started with Create React App
 
+## Setup ENV
+
+```
+REACT_APP_API_URL = https://api.github.com
+REACT_APP_BASE_URL = YOUR_FRONTEND_DOMAIN
+REACT_APP_CLIENT_ID = YOUR_CLIENT_ID_OAUTH
+REACT_APP_CLIENT_SECRET = YOUR_CLIENT_SECRET_OAUTH
+```
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
