@@ -31,8 +31,6 @@ export default function Home() {
         console.log(res)
         axios.get(`${process.env.REACT_APP_API_URL}/search/repositories?q=${searching}&order=desc&per_page=${res}`)
           .then((response) => {
-            // console.log(response.data)
-            // const items = response.data.items
             setTotal(response.data.total_count)
             setRepos(() => response.data.items)
           })
@@ -40,18 +38,19 @@ export default function Home() {
       })
       .catch((err) => console.log(err))
   }
-  window.onscroll = () => {
-    if (window.innerHeight + document.documentElement.scrollTop === document.documentElement.offsetHeight) {
-      getRepo()
-    }
-  }
   const search = (e) => {
     if (e.charCode === 13) {
       if (searching === '') {
         setRepos([])
+        setPage(0)
       } else {
         getRepo()
       }
+    }
+  }
+  window.onscroll = () => {
+    if (window.innerHeight + document.documentElement.scrollTop === document.documentElement.offsetHeight) {
+      getRepo()
     }
   }
   return (
