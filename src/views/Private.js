@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useLocation, useHistory } from 'react-router-dom'
 import { getToken } from '../actions/getToken'
-import { login, inputed, getRepo, search } from '../actions/getRepos'
+import { getMyRepo, searchMyRepo } from '../actions/getRepos'
 import Input from '../components/Input'
 import Repo from '../container/Repo'
 import '../assets/css/Private.css'
@@ -9,43 +9,57 @@ import '../assets/css/Private.css'
 export default function Private() {
   const history = useHistory()
   const location = useLocation()
-  
-  // const [repos, setRepos] = useState([])
-  // const [searching, setSearch] = useState('')
-  // const [total, setTotal] = useState(0)
-  // const [page, setPage] = useState(0)
 
-  const [myRepos, setMyRepos] = useState([])
-  const [mySearching, setMySearch] = useState('')
-  const [myTotal, setMyTotal] = useState(0)
-  const [myPage, setMyPage] = useState(0)
+  const [repos, setRepos] = useState([])
+  const [fullRepos, setFullRepos] = useState([])
+  // const [searching, setSearch] = useState('')
+  const [page, setPage] = useState(0)
+  // const [load, setLoad] = useState(1)
+  // const actionInput = (e) => inputed(e, setSearch)
+  const actionGetRepo = () => getMyRepo(page, setRepos, setPage, setFullRepos)
+  const actionSearch = (e) => searchMyRepo(e, page, setPage, setRepos, fullRepos, actionGetRepo)
+
+  window.onscroll = () => {
+    let innerHeight = window.innerHeight
+    let scrollTop = document.documentElement.scrollTop
+    let offsetHeight = document.documentElement.offsetHeight
+    console.log(innerHeight + scrollTop)
+    console.log(offsetHeight)
+    if (innerHeight + scrollTop ===  offsetHeight) { actionGetRepo() }
+  }
 
   useEffect(() => {
     const code = location.search.split('=')
     getToken(location, history, code)
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    if (localStorage.getItem('access_token')) {
+      actionGetRepo()
+    } else {
+      history.push('/')
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [history])
+
   return (
     <div className=" container my-5 d-flex flex-column">
       <div className="d-flex flex-column">
         {/* <Input onchange={inputed} onenter={search} placeholder="Search Repositories" /> */}
-        <Input placeholder="Your Repositories" />
-        <br />
-        <Repo
-          branch={'main'}
-          // branch={item.default_branch}
-          avatar={'https://avatars.githubusercontent.com/u/72542280?s=460&u=09207f92a439d660f07bb376109fb02b82de500c&v=4'}
-          // avatar={item.owner.avatar_url}
-          title={'OctoCat'}
-          // title={item.name}
-          desc={'Dummy Data OctoCat'}
-          // desc={item.description}
-          fork={0}
-          // fork={item.forks}
-          url={'https:/github.com/octocat/dummy'}
-          // url={item.html_url}
-          // key={item.id}
+        <Input
+          onchange={actionSearch}
+          // onenter={actionSearch}
+          placeholder="Your Repositories"
         />
+        <br />
+        {repos.map((item) => (
+          <Repo
+            branch={item.default_branch}
+            avatar={item.owner.avatar_url}
+            title={item.name}
+            desc={item.description}
+            fork={item.forks}
+            url={item.html_url}
+            key={item.id}
+          />
+        ))}
       </div>
     </div>
   )
