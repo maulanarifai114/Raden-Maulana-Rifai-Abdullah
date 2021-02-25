@@ -9,10 +9,11 @@ export default function Home() {
   const [searching, setSearch] = useState('')
   const [total, setTotal] = useState(0)
   const [page, setPage] = useState(0)
-  // const url = `https://github.com/login/oauth/authorize?client_id=${clientId}&scope=repo&redirect_uri=http://localhost:3000/detail`
+  const url = `https://github.com/login/oauth/authorize?client_id=${process.env.REACT_APP_CLIENT_ID}&scope=repo&redirect_uri=${process.env.REACT_APP_BASE_URL}/private`
   const login = (e) => {
     e.preventDefault()
-    console.log('login')
+    const win = window.open(url, '_blank');
+    win.focus();
   }
   const inputed = (e) => {
     setSearch(e.target.value)
