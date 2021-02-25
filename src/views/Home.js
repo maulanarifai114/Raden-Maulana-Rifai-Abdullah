@@ -12,7 +12,7 @@ export default function Home() {
   const url = `https://github.com/login/oauth/authorize?client_id=${process.env.REACT_APP_CLIENT_ID}&scope=repo&redirect_uri=${process.env.REACT_APP_BASE_URL}/private`
   const login = (e) => {
     e.preventDefault()
-    const win = window.open(url, '_blank');
+    const win = window.open(url);
     win.focus();
   }
   const inputed = (e) => {
