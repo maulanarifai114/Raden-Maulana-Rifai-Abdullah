@@ -6,9 +6,9 @@ import Branch from '../components/Branch'
 import Fork from '../components/Fork'
 import '../assets/css/Repo.css'
 
-export default function Repo({keyProps, avatar, title, desc, url, branch, fork}) {
+export default function Repo({avatar, title, desc, url, branch, fork}) {
   return (
-    <div key={keyProps} className="github-repo d-flex mb-3">
+    <div className="github-repo d-flex mb-3">
       <Avatar avatar={avatar}/>
       <Title title={title} desc={desc}/>
       <div className="flex-fill d-flex align-items-end justify-content-between flex-column">
