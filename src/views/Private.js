@@ -12,10 +12,7 @@ export default function Private() {
 
   const [repos, setRepos] = useState([])
   const [fullRepos, setFullRepos] = useState([])
-  // const [searching, setSearch] = useState('')
   const [page, setPage] = useState(0)
-  // const [load, setLoad] = useState(1)
-  // const actionInput = (e) => inputed(e, setSearch)
   const actionGetRepo = () => getMyRepo(page, setRepos, setPage, setFullRepos)
   const actionSearch = (e) => searchMyRepo(e, page, setPage, setRepos, fullRepos, actionGetRepo)
 
@@ -42,10 +39,8 @@ export default function Private() {
   return (
     <div className=" container my-5 d-flex flex-column">
       <div className="d-flex flex-column">
-        {/* <Input onchange={inputed} onenter={search} placeholder="Search Repositories" /> */}
         <Input
           onchange={actionSearch}
-          // onenter={actionSearch}
           placeholder="Your Repositories"
         />
         <br />

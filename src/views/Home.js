@@ -10,7 +10,7 @@ export default function Home() {
   const [total, setTotal] = useState(0)
   const [page, setPage] = useState(0)
   const url = `https://github.com/login/oauth/authorize?client_id=${process.env.REACT_APP_CLIENT_ID}&scope=repo&redirect_uri=${process.env.REACT_APP_BASE_URL}/private`
-
+  
   const actionLogin = (e) => login(e, url)
   const actionInput = (e) => inputed(e, setSearch)
   const actionSearch = (e) => search(e, searching, page, setTotal, setRepos, setPage)
